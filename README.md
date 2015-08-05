@@ -5,6 +5,15 @@ The Geokit is an SDK providing a set of tools performing requests on the OnYourM
 Those requests include mapping, geocoding, reverse geocoding and routing.
 The [MapBox mapping SDK](https://www.mapbox.com/mapbox-ios-sdk/) is in charge of the map interaction, so this SDK must be included in your project.
 
+## Installation
+
+In order to install the geokit, you have to [install the MapBox SDK first](https://github.com/mapbox/mapbox-ios-sdk#installation) then drag and drop the file Geokit.framework into your project along with the bundle Geokit.bundle.
+Then include the geokit header file in your code
+
+```smalltalk
+#import <geokit/geokit.h>
+```
+
 ## Mapping
 The MapBox SDK is in charge of the mapping part. The OnYourMap tiles can be used thanks to the class **RMOymTileSource** that implements **RMAbstractWebMapSource** and can be used as a tile source for the MapBox SDK. This is how a map can be created :
 
@@ -39,10 +48,10 @@ All the parameters available for the request are described in the [appledoc prov
 The request can be processed in a sync or async way :
 
 ```smalltalk
-// Sync request
+/* Sync request */
 PlaceSearchResponse* myPlaces = [OYMClient search:request andCall:nil];
 
-// Async request
+/* Async request */
 [OYMClient search:request andCall:^(PlaceSearchResponse* response) {
         NSLog(@"%d places found",response.totalHits);
         // do something with the places found
@@ -61,10 +70,10 @@ PlaceNearestRequest* request = [[PlaceNearestRequest alloc] init];
 If the radius is 0, only the nearest place will be returned. Otherwise, everything in the radius will be returned.
 
 ```smalltalk
-// Sync request
+/* Sync request */
 PlaceNearestResponse* myPlaces = [OYMClient nearest:request andCall:nil];
 
-// Async request
+/* Async request */
 [OYMClient nearest:request andCall:^(PlaceNearestResponse* response) {
         NSLog(@"%d places found",response.totalHits);
     }];
@@ -84,10 +93,10 @@ All the parameters available for the route request are described in the [appledo
 Like the geocoding, route can be computed in a sync or async way
 
 ```smalltalk
-// Sync
+/* Sync */
 RouteResponse* route = [OYMClient directions:request andCall:nil];
 
-// Async
+/* Async */
 [OYMClient directions:request andCall:^(RouteResponse* response) {
         NSLog(@"The route distance is %f%@",response.length,response.distanceUnit);
     }];
@@ -105,7 +114,7 @@ That way, the number of points to display can be greatly reduced, with a huge sp
 
 ```smalltalk
 if ( [RouteUtilities checkDisplayLevel:displayLevelValue forZoomeLevel:currentZoomLevel] == true ) {
-	// keep the point for this zoom level
+	/* keep the point for this zoom level */
 }
 ```
 
@@ -114,7 +123,7 @@ The instructions returned by the "directions" function must be processed before 
 The function **renderInstruction** will transform an encoded instruction into a human readable string.
 
 ```smalltalk
-// Display all the route instructions
+/* Display all the route instructions */
  for (RouteInstruction* instruction in route.instructions) {
  	NSLog(@"%@",[RouteUtilities renderInstruction:instruction]);
  }
