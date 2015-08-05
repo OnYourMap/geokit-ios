@@ -11,7 +11,7 @@ In order to install the geokit, you have to [install the MapBox SDK first](https
 Then include the geokit header file in your code
 
 ```smalltalk
-#import <geokit/geokit.h>
+#import <Geokit/geokit.h>
 ```
 
 ## Mapping
