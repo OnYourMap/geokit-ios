@@ -116,7 +116,7 @@ The function **renderInstruction** will transform an encoded instruction into a 
 ```smalltalk
 // Display all the route instructions
  for (RouteInstruction* instruction in route.instructions) {
- 	NSLog(@"%@",[RouteUtilities convert:instruction]);
+ 	NSLog(@"%@",[RouteUtilities renderInstruction:instruction]);
  }
 ```
 
